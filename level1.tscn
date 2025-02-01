@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://bd5323ql6tqmo"]
+[gd_scene load_steps=5 format=3 uid="uid://bd5323ql6tqmo"]
+
+[ext_resource type="PackedScene" uid="uid://bkiqoq1sfknot" path="res://level1layout.tscn" id="1_8ac8p"]
+[ext_resource type="Script" path="res://level_1.gd" id="1_s3v07"]
+[ext_resource type="PackedScene" uid="uid://ejtqikuwi3d1" path="res://player.tscn" id="2_yrwx1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rouni"]
+size = Vector2(1927, 105)
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_s3v07")
+
+[node name="Level1Layout" parent="." instance=ExtResource("1_8ac8p")]
+
+[node name="Killzone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(966, 1133)
+shape = SubResource("RectangleShape2D_rouni")
+
+[node name="Player" parent="." instance=ExtResource("2_yrwx1")]
+position = Vector2(161, 920)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(161, 920)
+
+[connection signal="area_entered" from="Killzone" to="." method="_on_killzone_area_entered"]

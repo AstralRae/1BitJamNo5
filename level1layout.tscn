@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkiqoq1sfknot"]
+
+[ext_resource type="PackedScene" uid="uid://btx1ebbsu3ub1" path="res://layoutblock1.tscn" id="1_gmn2n"]
+
+[node name="Level1Layout" type="Node2D"]
+
+[node name="LayoutBlock1" parent="." instance=ExtResource("1_gmn2n")]
+position = Vector2(65, 1016)
+
+[node name="LayoutBlock2" parent="." instance=ExtResource("1_gmn2n")]
+position = Vector2(65, 888)
+
+[node name="LayoutBlock3" parent="." instance=ExtResource("1_gmn2n")]
+position = Vector2(65, 760)
+
+[node name="LayoutBlock4" parent="." instance=ExtResource("1_gmn2n")]
+position = Vector2(193, 1016)
+
+[node name="LayoutBlock5" parent="." instance=ExtResource("1_gmn2n")]
+position = Vector2(321, 1016)
+
+[node name="LayoutBlock6" parent="." instance=ExtResource("1_gmn2n")]
+position = Vector2(449, 1016)
+
+[node name="LayoutBlock7" parent="." instance=ExtResource("1_gmn2n")]
+position = Vector2(835, 1016)
+
+[node name="LayoutBlock8" parent="." instance=ExtResource("1_gmn2n")]
+position = Vector2(707, 1016)
