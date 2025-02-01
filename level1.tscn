@@ -17,6 +17,7 @@ size = Vector2(1927, 105)
 script = ExtResource("1_s3v07")
 
 [node name="Level1Layout" parent="." instance=ExtResource("1_8ac8p")]
+position = Vector2(147, 105)
 
 [node name="InitialWind" type="Area2D" parent="Level1Layout"]
 
@@ -33,7 +34,7 @@ shape = SubResource("RectangleShape2D_xw3cu")
 [node name="Killzone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(966, 1133)
+position = Vector2(961, 1353)
 shape = SubResource("RectangleShape2D_rouni")
 
 [node name="Player" parent="." instance=ExtResource("2_yrwx1")]
