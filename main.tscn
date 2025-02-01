@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bllcvxum6uyju" path="res://credits.tscn" id="3_bfdqn"]
 
 [node name="Main" type="Node"]
+process_mode = 3
 script = ExtResource("1_aaebn")
 
 [node name="Credits" parent="." instance=ExtResource("3_bfdqn")]
