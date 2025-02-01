@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+@export_category("Wind Settings")
+@export var WIND_SPEED = 275.0
+@export var WIND_ANGLE = 45.0
 
 var gravity = 980
 
@@ -21,7 +24,8 @@ func _physics_process(delta: float):
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and $UnpauseTimer.is_stopped():
+	# Switched from "is_action_pressed" to handle wind inconsistencies.
+	if Input.is_action_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -37,6 +41,8 @@ func _physics_process(delta: float):
 		velocity.x = velocity.x/2
 		# TODO: Prevent wind from interacting with player
 		# TODO: Play vine animation
+    
+	velocity = _apply_wind(velocity, delta)
 
 	move_and_slide()
 
@@ -62,3 +68,12 @@ func _on_pause_menu_quit_signal():
 	var level_instance = load("res://main.tscn").instantiate() # Load & instantiate main menu
 	get_tree().root.add_child(level_instance) # Add main menu as a child of the root tree
 	get_tree().set_current_scene.call_deferred(level_instance) # Set main menu as the new scene
+
+func _apply_wind(velocity: Vector2, delta: float) -> Vector2:
+	var angleInRadians = WIND_ANGLE * (PI / 180)
+	
+	velocity.x = velocity.x + (WIND_SPEED * cos(angleInRadians))
+	# make sure we apply the same delta we apply to the gravity
+	velocity.y = velocity.y + (WIND_SPEED * sin(angleInRadians) * delta)
+	
+	return velocity

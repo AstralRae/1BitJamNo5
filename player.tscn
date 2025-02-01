@@ -10,6 +10,8 @@ size = Vector2(16, 24)
 [node name="Player" type="CharacterBody2D"]
 process_mode = 1
 script = ExtResource("1_x6sbc")
+WIND_SPEED = 0.0
+WIND_ANGLE = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_mixxm")
