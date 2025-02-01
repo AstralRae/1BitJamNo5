@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://bllcvxum6uyju"]
+
+[ext_resource type="Script" path="res://credits.gd" id="1_u0g2k"]
+[ext_resource type="Theme" uid="uid://b7q4t1noctulq" path="res://font_theme.tres" id="1_vbl6k"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u0g2k")
+
+[node name="BlackBG" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="CreditsText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -621.5
+offset_top = 107.0
+offset_right = 621.5
+offset_bottom = 540.0
+grow_horizontal = 2
+theme = ExtResource("1_vbl6k")
+bbcode_enabled = true
+text = "[center]Developed by[/center]
+[center]NivProject and AstralRae[/center]
+
+[center]Art by Skwiiggle[/center]
+
+[center]Made for the 1-Bit Jam #5[/center]"
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -361.0
+offset_right = 174.0
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_vbl6k")
+theme_override_font_sizes/font_size = 100
+text = "Menu"
+flat = true
+
+[connection signal="button_down" from="MenuButton" to="." method="_on_menu_button_button_down"]

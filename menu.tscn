@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://3nwwr0oaimtn"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_jbwfw"]
+[ext_resource type="Theme" uid="uid://b7q4t1noctulq" path="res://font_theme.tres" id="1_yiic3"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jbwfw")
+
+[node name="BlackBG" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="GameName" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -807.5
+offset_top = 112.0
+offset_right = 807.5
+offset_bottom = 518.0
+grow_horizontal = 2
+theme = ExtResource("1_yiic3")
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "[center]Game Name[/center]"
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = -36.0
+offset_right = 109.5
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yiic3")
+theme_override_font_sizes/font_size = 100
+text = "Start"
+flat = true
+
+[node name="CreditsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -169.0
+offset_top = -394.0
+offset_right = 169.0
+offset_bottom = -286.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_yiic3")
+theme_override_font_sizes/font_size = 100
+text = "Credits"
+flat = true
+
+[connection signal="button_down" from="StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="button_down" from="CreditsButton" to="." method="_on_credits_button_button_down"]
