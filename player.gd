@@ -41,7 +41,7 @@ func _physics_process(delta: float):
 		velocity.x = velocity.x/2
 		# TODO: Prevent wind from interacting with player
 		# TODO: Play vine animation
-    
+	
 	velocity = _apply_wind(velocity, delta)
 
 	move_and_slide()
