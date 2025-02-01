@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ejtqikuwi3d1"]
+[gd_scene load_steps=4 format=3 uid="uid://lk87bq5dpccu"]
 
 [ext_resource type="Texture2D" uid="uid://dgn1kbit8ktj2" path="res://icon.svg" id="1_5iiny"]
 [ext_resource type="Script" path="res://player.gd" id="1_x6sbc"]
@@ -8,6 +8,8 @@ size = Vector2(64, 64)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_x6sbc")
+WIND_SPEED = 0.0
+WIND_ANGLE = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
