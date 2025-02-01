@@ -28,6 +28,36 @@ theme_override_font_sizes/normal_font_size = 200
 bbcode_enabled = true
 text = "[center][outline_size={40}]Paused[/outline_size][/center]"
 
+[node name="ResumeText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -806.0
+offset_top = 490.0
+offset_right = 809.0
+offset_bottom = 896.0
+grow_horizontal = 2
+theme = ExtResource("1_ltxlo")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center][outline_size={40}]Resume[/outline_size][/center]"
+
+[node name="MenuText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -807.0
+offset_top = 690.0
+offset_right = 808.0
+offset_bottom = 1096.0
+grow_horizontal = 2
+theme = ExtResource("1_ltxlo")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center][outline_size={40}]Main Menu[/outline_size][/center]"
+
 [node name="ResumeButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
