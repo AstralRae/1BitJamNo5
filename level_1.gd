@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Player.publicReset.call()
 	pass
 	# TODO: Play Level 1 music
 
@@ -16,6 +17,7 @@ func _on_killzone_area_entered(area: Area2D):
 	
 func reset_level():
 	$Player.position = $PlayerSpawn.position
+	$Player.publicReset.call()
 	# TODO: Reset wind/obstacles/enemies/etc.
 
 func _on_wind_area_entered(area: Area2D, new_wind_speed: float, new_wind_angle: float) -> void:

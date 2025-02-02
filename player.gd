@@ -3,14 +3,18 @@ extends CharacterBody2D
 @export_category("Movement")
 # The below control walk speed
 @export var WALK_ACCELERATION = 600.0 # This is how fast the character can accelerate per second
-@export var WALK_MAX_SPEED = 300.0 # This is the character's max speed
-# If WALK_ACCELERATION and WALK_MAX_SPEED are equal then it takes 1 second to reach max speed
+var default_WALK_ACCELERATION = 600.0
+@export var MAX_WALK_SPEED = 300.0 # This is the character's max speed
+const default_MAX_WALK_SPEED = 300.0
+# If WALK_ACCELERATION and MAX_WALK_SPEED are equal then it takes 1 second to reach max speed
 # IF WALK_ACCELERATION is higher then it takes less than a second
 # IF WALK_ACCELERATION is lower then it takes more than a second
 
 # The below control jump physics
 @export var JUMP_POWER = -2000.0 # How strong is the jump
+const default_JUMP_POWER = -2000.0
 @export var MAX_JUMP_POWER = -400.0 # How much total jump can be applied
+const default_MAX_JUMP_POWER = -400.0
 # abs(JUMP_POWER) must be greater than the strength of gravity
 # This is because gravity * delta is the downward force on the character
 # So JUMP_POWER * delta must be greater
@@ -19,14 +23,23 @@ extends CharacterBody2D
 # The longer it takes to reach max jump the easier it is to do a smaller jump
 @export_category("Wind")
 @export var WIND_SPEED = 0.0
+const default_WIND_SPEED = 0
 @export var WIND_ANGLE = 0.0
+const default_WIND_ANGLE = 0
 @export_category("Gravity")
 @export var gravity = 980
+const default_gravity = 980
+
+# Expose the reset function so it can be called by the level's reset
+@export var publicReset = func (): reset()
 
 # If current_speed is positive the char is walking right, if negative the char is walking left
 var current_speed = 0.0 
+const default_current_speed = 0
 var current_jump_velocity_applied = 0
-var jump_released = false
+const default_current_jump_velocity_applied = 0
+var jump_released = true
+const default_jump_released = true # Starts as true to prevent automatic jump on reset
 
 func _ready():
 	## Load but hide the pause menu on scene load
@@ -77,9 +90,9 @@ func _physics_process(delta: float):
 	if walkDirection:
 		var deltaX = (walkDirection * WALK_ACCELERATION + windDeltaX) * delta
 		if walkDirection > 0:
-			velocity.x = minf(velocity.x + deltaX, WALK_MAX_SPEED + windDeltaX)
+			velocity.x = minf(velocity.x + deltaX, MAX_WALK_SPEED + windDeltaX)
 		if walkDirection < 0:
-			velocity.x = maxf(velocity.x + deltaX, -WALK_MAX_SPEED + windDeltaX)
+			velocity.x = maxf(velocity.x + deltaX, -MAX_WALK_SPEED + windDeltaX)
 	else:
 		velocity.x = move_toward(velocity.x, windDeltaX, WALK_ACCELERATION * delta)
 		
@@ -89,7 +102,19 @@ func _physics_process(delta: float):
 		# TODO: Play vine animation
 
 	move_and_slide()
-
+	
+func reset():
+	# I wonder if there's a better way to do this
+	WALK_ACCELERATION = default_WALK_ACCELERATION
+	MAX_WALK_SPEED = default_MAX_WALK_SPEED
+	JUMP_POWER = default_JUMP_POWER
+	MAX_JUMP_POWER = default_MAX_JUMP_POWER
+	WIND_ANGLE = default_WIND_ANGLE
+	WIND_SPEED = default_WIND_SPEED
+	gravity = default_gravity
+	current_speed = default_current_speed
+	current_jump_velocity_applied = default_current_jump_velocity_applied
+	jump_released = default_jump_released
 
 func _on_pause_menu_resume_signal():
 	## Unpause the game and set a timer to prevent the unpause button from jumping
