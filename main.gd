@@ -2,8 +2,8 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# TODO: Play menu music (add to Main tree to so it plays on both menus)
 	pass
-	#$Credits.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
