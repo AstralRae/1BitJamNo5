@@ -15,4 +15,10 @@ color = Color(0, 0, 0, 1)
 position = Vector2(65, 1016)
 
 [node name="LayoutBlock2" parent="." instance=ExtResource("1_gmn2n")]
-position = Vector2(490, 1016)
+position = Vector2(290, 1016)
+
+[node name="LayoutBlock3" parent="." instance=ExtResource("1_gmn2n")]
+position = Vector2(515, 1016)
+
+[node name="LayoutBlock4" parent="." instance=ExtResource("1_gmn2n")]
+position = Vector2(740, 1016)

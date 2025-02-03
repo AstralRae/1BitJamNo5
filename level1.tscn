@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsablm7buhxfq"]
+[gd_scene load_steps=9 format=3 uid="uid://dsablm7buhxfq"]
 
 [ext_resource type="PackedScene" uid="uid://csdot4mopow4n" path="res://level1layout.tscn" id="1_8ac8p"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_s3v07"]
-[ext_resource type="PackedScene" uid="uid://ejtqikuwi3d1" path="res://player.tscn" id="2_yrwx1"]
+[ext_resource type="PackedScene" uid="uid://lk87bq5dpccu" path="res://player.tscn" id="2_yrwx1"]
+[ext_resource type="Theme" uid="uid://b7q4t1noctulq" path="res://font_theme.tres" id="3_7hk28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yyp2"]
 size = Vector2(256, 255.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3cu"]
 size = Vector2(387.5, 257)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlkgy"]
+size = Vector2(215, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rouni"]
 size = Vector2(8371, 105)
@@ -22,14 +26,33 @@ position = Vector2(147, 105)
 [node name="InitialWind" type="Area2D" parent="Level1Layout"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/InitialWind"]
-position = Vector2(257, 823.75)
+position = Vector2(0, 829)
 shape = SubResource("RectangleShape2D_2yyp2")
 
 [node name="FirstWindJump" type="Area2D" parent="Level1Layout"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/FirstWindJump"]
-position = Vector2(579.25, 823.5)
+position = Vector2(322, 829)
 shape = SubResource("RectangleShape2D_xw3cu")
+
+[node name="FirstPopup" type="Area2D" parent="."]
+position = Vector2(469, 934)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstPopup"]
+position = Vector2(521, 70)
+shape = SubResource("RectangleShape2D_nlkgy")
+
+[node name="FirstPopupLabel" type="Label" parent="FirstPopup"]
+visible = false
+offset_left = 431.0
+offset_top = 35.0
+offset_right = 616.0
+offset_bottom = 58.0
+theme = ExtResource("3_7hk28")
+theme_override_font_sizes/font_size = 20
+text = "Winter's gone on too long... 
+I need to do something!"
+horizontal_alignment = 1
 
 [node name="Killzone" type="Area2D" parent="."]
 
@@ -38,11 +61,13 @@ position = Vector2(530.5, 1353)
 shape = SubResource("RectangleShape2D_rouni")
 
 [node name="Player" parent="." instance=ExtResource("2_yrwx1")]
-position = Vector2(161, 920)
+position = Vector2(138, 1031)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(161, 920)
+position = Vector2(137, 1029)
 
 [connection signal="area_entered" from="Level1Layout/InitialWind" to="." method="_on_wind_area_entered" binds= [100.0, 180.0]]
 [connection signal="area_entered" from="Level1Layout/FirstWindJump" to="." method="_on_wind_area_entered" binds= [275.0, 45.0]]
+[connection signal="area_entered" from="FirstPopup" to="." method="_on_first_popup_area_entered"]
+[connection signal="area_exited" from="FirstPopup" to="." method="_on_first_popup_area_exited"]
 [connection signal="area_entered" from="Killzone" to="." method="_on_killzone_area_entered"]
