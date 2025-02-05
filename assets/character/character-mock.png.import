@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
+uid="uid://d3hdn0mjrjcxe"
+=======
 uid="uid://i5o0lq20mvp0"
+>>>>>>> main
 path="res://.godot/imported/character-mock.png-b77746ee6ed07b2ebfd6cc48efaaaa27.ctex"
 metadata={
 "vram_texture": false
