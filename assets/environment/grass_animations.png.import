@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://d3hdn0mjrjcxe"
-=======
-uid="uid://i5o0lq20mvp0"
->>>>>>> main
-path="res://.godot/imported/character-mock.png-b77746ee6ed07b2ebfd6cc48efaaaa27.ctex"
+uid="uid://dhglk1tl1cu25"
+path="res://.godot/imported/grass_animations.png-7a27403b6ef216e85870e60eb4663818.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/character-mock.png"
-dest_files=["res://.godot/imported/character-mock.png-b77746ee6ed07b2ebfd6cc48efaaaa27.ctex"]
+source_file="res://assets/environment/grass_animations.png"
+dest_files=["res://.godot/imported/grass_animations.png-7a27403b6ef216e85870e60eb4663818.ctex"]
 
 [params]
 

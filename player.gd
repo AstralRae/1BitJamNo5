@@ -32,6 +32,7 @@ const default_gravity = 980
 
 # Expose the reset function so it can be called by the level's reset
 @export var publicReset = func (): reset()
+@export var publicWindReset = func (): wind_reset()
 
 # If current_speed is positive the char is walking right, if negative the char is walking left
 var current_speed = 0.0 
@@ -109,12 +110,15 @@ func reset():
 	MAX_WALK_SPEED = default_MAX_WALK_SPEED
 	JUMP_POWER = default_JUMP_POWER
 	MAX_JUMP_POWER = default_MAX_JUMP_POWER
-	WIND_ANGLE = default_WIND_ANGLE
-	WIND_SPEED = default_WIND_SPEED
+	wind_reset()
 	gravity = default_gravity
 	current_speed = default_current_speed
 	current_jump_velocity_applied = default_current_jump_velocity_applied
 	jump_released = default_jump_released
+	
+func wind_reset():
+	WIND_ANGLE = default_WIND_ANGLE
+	WIND_SPEED = default_WIND_SPEED
 
 func _on_pause_menu_resume_signal():
 	## Unpause the game and set a timer to prevent the unpause button from jumping
