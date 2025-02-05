@@ -1,10 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsablm7buhxfq"]
+[gd_scene load_steps=20 format=3 uid="uid://dsablm7buhxfq"]
 
 [ext_resource type="PackedScene" uid="uid://csdot4mopow4n" path="res://level1layout.tscn" id="1_8ac8p"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_s3v07"]
 [ext_resource type="PackedScene" uid="uid://lk87bq5dpccu" path="res://player.tscn" id="2_yrwx1"]
 [ext_resource type="Theme" uid="uid://b7q4t1noctulq" path="res://font_theme.tres" id="3_7hk28"]
 [ext_resource type="FontFile" uid="uid://teq6r0iaqjdw" path="res://yummy nickels.ttf" id="4_jwsg5"]
+[ext_resource type="AudioStream" uid="uid://g0abpe8gvxwc" path="res://assets/sound/Music Loop.wav" id="6_utm3l"]
+[ext_resource type="AudioStream" uid="uid://d2mjukelx3vvf" path="res://assets/sound/Popup Noise.wav" id="7_ffcni"]
+[ext_resource type="AudioStream" uid="uid://33rbkg8cvol8" path="res://assets/sound/Checkpoint Noise.wav" id="8_fx81f"]
+[ext_resource type="AudioStream" uid="uid://dp7104jsr0krv" path="res://assets/sound/Death Noise.wav" id="9_dcjnw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yyp2"]
 size = Vector2(190, 193.75)
@@ -217,6 +221,21 @@ obviously got it
 on the first
 try, right?"
 horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_utm3l")
+volume_db = 16.0
+autoplay = true
+
+[node name="PopupNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ffcni")
+
+[node name="CheckpointNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_fx81f")
+
+[node name="DeathNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_dcjnw")
 
 [connection signal="area_entered" from="Level1Layout/InitialWind" to="." method="_on_wind_area_entered" binds= [100.0, 180.0]]
 [connection signal="area_exited" from="Level1Layout/InitialWind" to="." method="_on_wind_area_exited"]

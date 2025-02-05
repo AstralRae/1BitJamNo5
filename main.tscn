@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cokiy6vht4ea2"]
+[gd_scene load_steps=5 format=3 uid="uid://cokiy6vht4ea2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_aaebn"]
 [ext_resource type="PackedScene" uid="uid://3nwwr0oaimtn" path="res://menu.tscn" id="2_beqju"]
 [ext_resource type="PackedScene" uid="uid://bllcvxum6uyju" path="res://credits.tscn" id="3_bfdqn"]
+[ext_resource type="AudioStream" uid="uid://g0abpe8gvxwc" path="res://assets/sound/Music Loop.wav" id="4_unwt4"]
 
 [node name="Main" type="Node"]
 process_mode = 3
@@ -11,6 +12,12 @@ script = ExtResource("1_aaebn")
 [node name="Credits" parent="." instance=ExtResource("3_bfdqn")]
 
 [node name="Menu" parent="." instance=ExtResource("2_beqju")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_unwt4")
+volume_db = 8.0
+autoplay = true
 
 [connection signal="menu_signal" from="Credits" to="." method="_on_credits_menu_signal"]
 [connection signal="credit_signal" from="Menu" to="." method="_on_menu_credit_signal"]

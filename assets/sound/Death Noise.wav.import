@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dp7104jsr0krv"
+path="res://.godot/imported/Death Noise.wav-0eeca8c0e293e8e4a64e2131692d4622.sample"
+
+[deps]
+
+source_file="res://assets/sound/Death Noise.wav"
+dest_files=["res://.godot/imported/Death Noise.wav-0eeca8c0e293e8e4a64e2131692d4622.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
