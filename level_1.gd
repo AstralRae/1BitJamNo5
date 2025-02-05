@@ -20,15 +20,52 @@ func reset_level():
 	$Player.publicReset.call()
 	# TODO: Reset wind/obstacles/enemies/etc.
 
-func _on_wind_area_entered(area: Area2D, new_wind_speed: float, new_wind_angle: float) -> void:
+func _on_wind_area_entered(area: Area2D, new_wind_speed: float, new_wind_angle: float):
 	$Player.WIND_SPEED = new_wind_speed
 	$Player.WIND_ANGLE = new_wind_angle
 	return
 
 func _on_first_popup_area_entered(area: Area2D):
-	$FirstPopup/FirstPopupLabel.show()
+	$FirstPopup/Label.show()
 	# TODO: Add popup noise
 
 func _on_first_popup_area_exited(area: Area2D):
-	$FirstPopup/FirstPopupLabel.hide()
+	$FirstPopup/Label.hide()
+
+func _on_second_popup_area_entered(area: Area2D):
+	$SecondPopup/Label.show()
+	# TODO: Add popup noise
+
+func _on_second_popup_area_exited(area: Area2D):
+	$SecondPopup/Label.hide()
+
+func _on_third_popup_area_entered(area: Area2D):
+	$ThirdPopup/Label.show()
+	# TODO: Add popup noise
 	
+func _on_third_popup_area_exited(area: Area2D):
+	$ThirdPopup/Label.hide()
+
+func _on_fourth_popup_area_entered(area: Area2D):
+	$FourthPopup/Label.show()
+	# TODO: Add popup noise
+
+func _on_fourth_popup_area_exited(area: Area2D):
+	$FourthPopup/Label.hide()
+
+func _on_first_checkpoint_area_entered(area: Area2D):
+	$PlayerSpawn.position = $FirstCheckpoint/Marker2D.position
+	$FirstCheckpoint/Label.show()
+	# TODO: Add popup noise
+
+func _on_first_checkpoint_area_exited(area: Area2D):
+	$FirstCheckpoint/Label.hide()
+
+
+func _on_second_checkpoint_area_entered(area: Area2D) -> void:
+	$PlayerSpawn.position = $SecondCheckpoint/Marker2D.position
+	$SecondCheckpoint/Label.show()
+	# TODO: Add popup noise
+
+func _on_second_checkpoint_area_exited(area: Area2D) -> void:
+	$SecondCheckpoint/Label.hide()

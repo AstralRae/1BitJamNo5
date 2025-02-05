@@ -1,73 +1,235 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsablm7buhxfq"]
+[gd_scene load_steps=16 format=3 uid="uid://dsablm7buhxfq"]
 
 [ext_resource type="PackedScene" uid="uid://csdot4mopow4n" path="res://level1layout.tscn" id="1_8ac8p"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_s3v07"]
 [ext_resource type="PackedScene" uid="uid://lk87bq5dpccu" path="res://player.tscn" id="2_yrwx1"]
 [ext_resource type="Theme" uid="uid://b7q4t1noctulq" path="res://font_theme.tres" id="3_7hk28"]
+[ext_resource type="FontFile" uid="uid://teq6r0iaqjdw" path="res://yummy nickels.ttf" id="4_jwsg5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yyp2"]
-size = Vector2(256, 255.5)
+size = Vector2(190, 193.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw3cu"]
-size = Vector2(387.5, 257)
+size = Vector2(174, 198)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibo6r"]
+size = Vector2(93, 210)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57awi"]
+size = Vector2(390.5, 560)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlkgy"]
-size = Vector2(215, 75)
+size = Vector2(127.875, 85.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6jiw"]
+size = Vector2(59.5, 132)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rouni"]
 size = Vector2(8371, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2yax8"]
+size = Vector2(1322, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pg6ao"]
+size = Vector2(46, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_teg6c"]
+size = Vector2(44, 65)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_s3v07")
 
 [node name="Level1Layout" parent="." instance=ExtResource("1_8ac8p")]
-position = Vector2(147, 105)
+position = Vector2(130, 134)
 
 [node name="InitialWind" type="Area2D" parent="Level1Layout"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/InitialWind"]
-position = Vector2(0, 829)
+position = Vector2(672, -83.875)
 shape = SubResource("RectangleShape2D_2yyp2")
 
 [node name="FirstWindJump" type="Area2D" parent="Level1Layout"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/FirstWindJump"]
-position = Vector2(322, 829)
+position = Vector2(920, -82)
 shape = SubResource("RectangleShape2D_xw3cu")
+
+[node name="WindTunnel" type="Area2D" parent="Level1Layout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/WindTunnel"]
+position = Vector2(1714.5, -133)
+shape = SubResource("RectangleShape2D_ibo6r")
+
+[node name="WindJumpZone" type="Area2D" parent="Level1Layout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/WindJumpZone"]
+position = Vector2(1429, -522)
+shape = SubResource("RectangleShape2D_57awi")
+
+[node name="Label" type="Label" parent="Level1Layout"]
+offset_left = 1592.0
+offset_top = -298.0
+offset_right = 1820.0
+offset_bottom = -249.0
+theme = ExtResource("3_7hk28")
+theme_override_fonts/font = ExtResource("4_jwsg5")
+theme_override_font_sizes/font_size = 20
+text = "(Press \"J\" to
+slow down!)"
+horizontal_alignment = 1
 
 [node name="FirstPopup" type="Area2D" parent="."]
 position = Vector2(469, 934)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FirstPopup"]
-position = Vector2(521, 70)
+position = Vector2(-327, -834)
 shape = SubResource("RectangleShape2D_nlkgy")
 
-[node name="FirstPopupLabel" type="Label" parent="FirstPopup"]
+[node name="Label" type="Label" parent="FirstPopup"]
 visible = false
-offset_left = 431.0
-offset_top = 35.0
-offset_right = 616.0
-offset_bottom = 58.0
+offset_left = -372.0
+offset_top = -932.0
+offset_right = -13.0
+offset_bottom = -889.0
 theme = ExtResource("3_7hk28")
 theme_override_font_sizes/font_size = 20
 text = "Winter's gone on too long... 
 I need to do something!"
 horizontal_alignment = 1
 
+[node name="SecondPopup" type="Area2D" parent="."]
+position = Vector2(938, 1868)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondPopup"]
+position = Vector2(-381, -1817)
+shape = SubResource("RectangleShape2D_nlkgy")
+
+[node name="Label" type="Label" parent="SecondPopup"]
+visible = false
+offset_left = -472.0
+offset_top = -1870.0
+offset_right = -113.0
+offset_bottom = -1827.0
+theme = ExtResource("3_7hk28")
+theme_override_font_sizes/font_size = 20
+text = "Woah... the wind is really
+howling today!"
+horizontal_alignment = 1
+
+[node name="ThirdPopup" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThirdPopup"]
+position = Vector2(929, 18)
+shape = SubResource("RectangleShape2D_l6jiw")
+
+[node name="Label" type="Label" parent="ThirdPopup"]
+visible = false
+offset_left = 602.0
+offset_top = -47.0
+offset_right = 1287.0
+offset_bottom = 84.0
+theme = ExtResource("3_7hk28")
+theme_override_font_sizes/font_size = 20
+text = "...But maybe that
+can help me!"
+horizontal_alignment = 1
+
 [node name="Killzone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(530.5, 1353)
+position = Vector2(3773, 207)
 shape = SubResource("RectangleShape2D_rouni")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(697, -331)
+shape = SubResource("RectangleShape2D_2yax8")
+
+[node name="FourthPopup" type="Area2D" parent="."]
+position = Vector2(938, 1868)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FourthPopup"]
+position = Vector2(281.063, -1901.25)
+shape = SubResource("RectangleShape2D_nlkgy")
+
+[node name="Label" type="Label" parent="FourthPopup"]
+visible = false
+offset_left = 138.0
+offset_top = -1930.0
+offset_right = 498.0
+offset_bottom = -1887.0
+theme = ExtResource("3_7hk28")
+theme_override_font_sizes/font_size = 20
+text = "Phew... I really need to
+find a tree to attune with!"
+horizontal_alignment = 1
+
 [node name="Player" parent="." instance=ExtResource("2_yrwx1")]
-position = Vector2(138, 1031)
+position = Vector2(57, 77)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(137, 1029)
+position = Vector2(55, 66)
+
+[node name="FirstCheckpoint" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="FirstCheckpoint"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstCheckpoint"]
+position = Vector2(1705, 39)
+shape = SubResource("RectangleShape2D_pg6ao")
+
+[node name="Marker2D" type="Marker2D" parent="FirstCheckpoint"]
+position = Vector2(1706, 62)
+
+[node name="Label" type="Label" parent="FirstCheckpoint"]
+visible = false
+offset_left = 1563.0
+offset_top = -25.0
+offset_right = 1857.0
+offset_bottom = -2.0
+theme = ExtResource("3_7hk28")
+theme_override_font_sizes/font_size = 20
+text = "Finally... some respite!"
+
+[node name="SecondCheckpoint" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="SecondCheckpoint"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondCheckpoint"]
+position = Vector2(1228, -490)
+shape = SubResource("RectangleShape2D_teg6c")
+
+[node name="Marker2D" type="Marker2D" parent="SecondCheckpoint"]
+position = Vector2(1227, -476)
+
+[node name="Label" type="Label" parent="SecondCheckpoint"]
+visible = false
+offset_left = 1051.0
+offset_top = -637.0
+offset_right = 1358.0
+offset_bottom = -525.0
+theme = ExtResource("3_7hk28")
+theme_override_font_sizes/font_size = 20
+text = "Close one!
+But I have wings. I
+obviously got it
+on the first
+try, right?"
+horizontal_alignment = 1
 
 [connection signal="area_entered" from="Level1Layout/InitialWind" to="." method="_on_wind_area_entered" binds= [100.0, 180.0]]
-[connection signal="area_entered" from="Level1Layout/FirstWindJump" to="." method="_on_wind_area_entered" binds= [275.0, 45.0]]
+[connection signal="area_entered" from="Level1Layout/FirstWindJump" to="." method="_on_wind_area_entered" binds= [275.0, 315.0]]
+[connection signal="area_entered" from="Level1Layout/WindTunnel" to="." method="_on_wind_area_entered" binds= [750.0, 270.0]]
+[connection signal="area_entered" from="Level1Layout/WindJumpZone" to="." method="_on_wind_area_entered" binds= [150.0, 270.0]]
 [connection signal="area_entered" from="FirstPopup" to="." method="_on_first_popup_area_entered"]
 [connection signal="area_exited" from="FirstPopup" to="." method="_on_first_popup_area_exited"]
+[connection signal="area_entered" from="SecondPopup" to="." method="_on_second_popup_area_entered"]
+[connection signal="area_exited" from="SecondPopup" to="." method="_on_second_popup_area_exited"]
+[connection signal="area_entered" from="ThirdPopup" to="." method="_on_third_popup_area_entered"]
+[connection signal="area_exited" from="ThirdPopup" to="." method="_on_third_popup_area_exited"]
 [connection signal="area_entered" from="Killzone" to="." method="_on_killzone_area_entered"]
+[connection signal="area_entered" from="FourthPopup" to="." method="_on_fourth_popup_area_entered"]
+[connection signal="area_exited" from="FourthPopup" to="." method="_on_fourth_popup_area_exited"]
+[connection signal="area_entered" from="FirstCheckpoint" to="." method="_on_first_checkpoint_area_entered"]
+[connection signal="area_exited" from="FirstCheckpoint" to="." method="_on_first_checkpoint_area_exited"]
+[connection signal="area_entered" from="SecondCheckpoint" to="." method="_on_second_checkpoint_area_entered"]
+[connection signal="area_exited" from="SecondCheckpoint" to="." method="_on_second_checkpoint_area_exited"]
