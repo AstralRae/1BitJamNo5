@@ -1,26 +1,29 @@
 extends Node2D
 
+var Popup1 = false
+var Popup2 = false
+var Popup3 = false
+var Popup4 = false
+var Check1 = false
+var Check2 = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Player.publicReset.call()
-	pass
-	# TODO: Play Level 1 music
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
 	pass
 	
 func _on_killzone_area_entered(area: Area2D):
-	# TODO: Play death noise
+	$DeathNoise.play()
 	reset_level()
 	
 func reset_level():
 	$Player.position = $PlayerSpawn.position
 	$Player.publicReset.call()
-	# TODO: Reset wind/obstacles/enemies/etc.
 
-func _on_wind_area_entered(area: Area2D, new_wind_speed: float, new_wind_angle: float) -> void:
+func _on_wind_area_entered(area: Area2D, new_wind_speed: float, new_wind_angle: float):
 	$Player.WIND_SPEED = new_wind_speed
 	$Player.WIND_ANGLE = new_wind_angle
 	return
@@ -29,8 +32,58 @@ func _on_wind_area_exited(area: Area2D):
 	$Player.publicWindReset.call()
 
 func _on_first_popup_area_entered(area: Area2D):
-	$FirstPopup/FirstPopupLabel.show()
-	# TODO: Add popup noise
+	$FirstPopup/Label.show()
+	if Popup1 == false:
+		$PopupNoise.play()
+		Popup1 = true
 
 func _on_first_popup_area_exited(area: Area2D):
-	$FirstPopup/FirstPopupLabel.hide()
+	$FirstPopup/Label.hide()
+
+func _on_second_popup_area_entered(area: Area2D):
+	$SecondPopup/Label.show()
+	if Popup2 == false:
+		$PopupNoise.play()
+		Popup2 = true
+
+func _on_second_popup_area_exited(area: Area2D):
+	$SecondPopup/Label.hide()
+
+func _on_third_popup_area_entered(area: Area2D):
+	$ThirdPopup/Label.show()
+	if Popup3 == false:
+		$PopupNoise.play()
+		Popup3 = true
+	
+func _on_third_popup_area_exited(area: Area2D):
+	$ThirdPopup/Label.hide()
+
+func _on_fourth_popup_area_entered(area: Area2D):
+	$FourthPopup/Label.show()
+	if Popup4 == false:
+		$PopupNoise.play()
+		Popup4 = true
+
+func _on_fourth_popup_area_exited(area: Area2D):
+	$FourthPopup/Label.hide()
+
+func _on_first_checkpoint_area_entered(area: Area2D):
+	if Check1 == false:
+		$PlayerSpawn.position = $FirstCheckpoint/Marker2D.position
+		$FirstCheckpoint/Label.show()
+		$CheckpointNoise.play()
+		Check1 = true
+
+func _on_first_checkpoint_area_exited(area: Area2D):
+	$FirstCheckpoint/Label.hide()
+
+
+func _on_second_checkpoint_area_entered(area: Area2D) -> void:
+	if Check2 == false:
+		$PlayerSpawn.position = $SecondCheckpoint/Marker2D.position
+		$SecondCheckpoint/Label.show()
+		$CheckpointNoise.play()
+		Check2 = true
+
+func _on_second_checkpoint_area_exited(area: Area2D) -> void:
+	$SecondCheckpoint/Label.hide()
