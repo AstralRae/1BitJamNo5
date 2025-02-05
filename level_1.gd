@@ -23,4 +23,6 @@ func reset_level():
 func _on_wind_area_entered(area: Area2D, new_wind_speed: float, new_wind_angle: float) -> void:
 	$Player.WIND_SPEED = new_wind_speed
 	$Player.WIND_ANGLE = new_wind_angle
-	return
+
+func _on_wind_area_exited(area: Area2D):
+	$Player.publicWindReset.call()
