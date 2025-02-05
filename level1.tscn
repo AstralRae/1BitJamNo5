@@ -165,9 +165,11 @@ horizontal_alignment = 1
 
 [node name="Player" parent="." instance=ExtResource("2_yrwx1")]
 position = Vector2(57, 77)
+metadata/_edit_lock_ = true
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(55, 66)
+metadata/_edit_lock_ = true
 
 [node name="FirstCheckpoint" type="Area2D" parent="."]
 
@@ -217,11 +219,10 @@ try, right?"
 horizontal_alignment = 1
 
 [connection signal="area_entered" from="Level1Layout/InitialWind" to="." method="_on_wind_area_entered" binds= [100.0, 180.0]]
+[connection signal="area_exited" from="Level1Layout/InitialWind" to="." method="_on_wind_area_exited"]
 [connection signal="area_entered" from="Level1Layout/FirstWindJump" to="." method="_on_wind_area_entered" binds= [275.0, 315.0]]
 [connection signal="area_entered" from="Level1Layout/WindTunnel" to="." method="_on_wind_area_entered" binds= [750.0, 270.0]]
 [connection signal="area_entered" from="Level1Layout/WindJumpZone" to="." method="_on_wind_area_entered" binds= [150.0, 270.0]]
-[connection signal="area_exited" from="Level1Layout/InitialWind" to="." method="_on_wind_area_exited"]
-[connection signal="area_entered" from="Level1Layout/FirstWindJump" to="." method="_on_wind_area_entered" binds= [275.0, 45.0]]
 [connection signal="area_entered" from="FirstPopup" to="." method="_on_first_popup_area_entered"]
 [connection signal="area_exited" from="FirstPopup" to="." method="_on_first_popup_area_exited"]
 [connection signal="area_entered" from="SecondPopup" to="." method="_on_second_popup_area_entered"]
