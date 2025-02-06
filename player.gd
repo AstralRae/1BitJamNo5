@@ -45,6 +45,7 @@ const default_jump_released = true # Starts as true to prevent automatic jump on
 func _ready():
 	## Load but hide the pause menu on scene load
 	$Camera2D/PauseMenu.hide()
+	$AnimatedSprite2D.play("idle")
 
 func _physics_process(delta: float):
 	# Display pause menu and pause the game
@@ -101,6 +102,14 @@ func _physics_process(delta: float):
 	if vinePressed:
 		velocity.x = velocity.x/2
 		# TODO: Play vine animation
+
+	# Handle animations
+	if not is_on_floor():
+		$AnimatedSprite2D.play("jumping")
+	elif walkDirection:
+		$AnimatedSprite2D.play("running")
+	else:
+		$AnimatedSprite2D.play("idle") 
 
 	move_and_slide()
 	

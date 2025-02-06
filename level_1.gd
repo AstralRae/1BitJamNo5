@@ -22,6 +22,7 @@ func _on_killzone_area_entered(area: Area2D):
 func reset_level():
 	$Player.position = $PlayerSpawn.position
 	$Player.publicReset.call()
+	
 
 func _on_wind_area_entered(area: Area2D, new_wind_speed: float, new_wind_angle: float):
 	$Player.WIND_SPEED = new_wind_speed
