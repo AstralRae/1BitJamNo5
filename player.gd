@@ -34,9 +34,6 @@ const default_gravity = 980
 @export var publicReset = func (): reset()
 @export var publicWindReset = func (): wind_reset()
 
-# If current_speed is positive the char is walking right, if negative the char is walking left
-var current_speed = 0.0 
-const default_current_speed = 0
 var current_jump_velocity_applied = 0
 const default_current_jump_velocity_applied = 0
 var jump_released = true
@@ -101,6 +98,12 @@ func _physics_process(delta: float):
 	if vinePressed:
 		velocity.x = velocity.x/2
 		# TODO: Play vine animation
+	
+	var pointLeft = signf(velocity.x) < 0
+	var pointRight = signf(velocity.x) > 0
+	var flipCheck = (pointLeft and $Sprite2D.flip_h == false) or (pointRight and $Sprite2D.flip_h == true)
+	if flipCheck:
+		$Sprite2D.flip_h = !$Sprite2D.flip_h
 
 	move_and_slide()
 	
@@ -112,7 +115,6 @@ func reset():
 	MAX_JUMP_POWER = default_MAX_JUMP_POWER
 	wind_reset()
 	gravity = default_gravity
-	current_speed = default_current_speed
 	current_jump_velocity_applied = default_current_jump_velocity_applied
 	jump_released = default_jump_released
 	
