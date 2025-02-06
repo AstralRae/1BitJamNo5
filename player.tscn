@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://lk87bq5dpccu"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_x6sbc"]
-[ext_resource type="Texture2D" uid="uid://drp4ivk10g35" path="res://assets/character/character.png" id="2_mixxm"]
-[ext_resource type="PackedScene" path="res://pausemenu.tscn" id="3_fhxwb"]
+
+[ext_resource type="PackedScene" uid="uid://cmyisppnqsx3h" path="res://pausemenu.tscn" id="3_fhxwb"]
+[ext_resource type="SpriteFrames" uid="uid://qcb5ubvbbqw4" path="res://player.tres" id="3_hwew2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpp0u"]
 size = Vector2(16, 24)
@@ -10,9 +11,6 @@ size = Vector2(16, 24)
 [node name="Player" type="CharacterBody2D"]
 process_mode = 1
 script = ExtResource("1_x6sbc")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_mixxm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
@@ -37,6 +35,11 @@ scale = Vector2(0.5, 0.5)
 [node name="UnpauseTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+sprite_frames = ExtResource("3_hwew2")
+animation = &"idle"
 
 [connection signal="quit_signal" from="Camera2D/PauseMenu" to="." method="_on_pause_menu_quit_signal"]
 [connection signal="resume_signal" from="Camera2D/PauseMenu" to="." method="_on_pause_menu_resume_signal"]

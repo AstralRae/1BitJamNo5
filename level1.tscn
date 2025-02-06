@@ -71,15 +71,15 @@ position = Vector2(1429, -522)
 shape = SubResource("RectangleShape2D_57awi")
 
 [node name="Label" type="Label" parent="Level1Layout"]
-offset_left = 1592.0
-offset_top = -298.0
-offset_right = 1820.0
-offset_bottom = -249.0
+offset_left = 1617.0
+offset_top = -304.0
+offset_right = 1887.0
+offset_bottom = -255.0
 theme = ExtResource("3_7hk28")
 theme_override_fonts/font = ExtResource("4_jwsg5")
 theme_override_font_sizes/font_size = 20
-text = "(Press \"J\" to
-slow down!)"
+text = "(Press \"J\" or Circle
+to slow down!)"
 horizontal_alignment = 1
 
 [node name="FirstPopup" type="Area2D" parent="."]
