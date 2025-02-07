@@ -94,17 +94,12 @@ func _physics_process(delta: float):
 			velocity.x = maxf(velocity.x + deltaX, -MAX_WALK_SPEED + windDeltaX)
 	else:
 		velocity.x = move_toward(velocity.x, windDeltaX, WALK_ACCELERATION * delta)
-		
-	# Handle vine mechanic
-	if vinePressed:
-		velocity.x = velocity.x/2
-		# TODO: Play vine animation
 	
 	var pointLeft = signf(velocity.x) < 0
 	var pointRight = signf(velocity.x) > 0
-	var flipCheck = (pointLeft and $Sprite2D.flip_h == false) or (pointRight and $Sprite2D.flip_h == true)
+	var flipCheck = (pointLeft and $AnimatedSprite2D.flip_h == false) or (pointRight and $AnimatedSprite2D.flip_h == true)
 	if flipCheck:
-		$Sprite2D.flip_h = !$Sprite2D.flip_h
+		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 
 	# Handle animations
 	if not is_on_floor():
