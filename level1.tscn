@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsablm7buhxfq"]
+[gd_scene load_steps=28 format=3 uid="uid://dsablm7buhxfq"]
 
 [ext_resource type="PackedScene" uid="uid://csdot4mopow4n" path="res://level1layout.tscn" id="1_8ac8p"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_s3v07"]
 [ext_resource type="PackedScene" uid="uid://lk87bq5dpccu" path="res://player.tscn" id="2_yrwx1"]
-[ext_resource type="Theme" path="res://font_theme.tres" id="3_7hk28"]
+[ext_resource type="Theme" uid="uid://b7q4t1noctulq" path="res://font_theme.tres" id="3_7hk28"]
+[ext_resource type="Texture2D" uid="uid://d27dqscffr7fg" path="res://assets/environment/save_tree_48x64.png" id="5_jeuig"]
 [ext_resource type="AudioStream" uid="uid://g0abpe8gvxwc" path="res://assets/sound/Music Loop.wav" id="6_utm3l"]
 [ext_resource type="AudioStream" uid="uid://d2mjukelx3vvf" path="res://assets/sound/Popup Noise.wav" id="7_ffcni"]
 [ext_resource type="AudioStream" uid="uid://33rbkg8cvol8" path="res://assets/sound/Checkpoint Noise.wav" id="8_fx81f"]
@@ -33,8 +34,57 @@ size = Vector2(8371, 105)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yax8"]
 size = Vector2(1322, 55)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2mvf"]
+size = Vector2(193, 131)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmdh5"]
+size = Vector2(159, 76)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pg6ao"]
 size = Vector2(46, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6ppd"]
+atlas = ExtResource("5_jeuig")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_728xh"]
+atlas = ExtResource("5_jeuig")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cryfi"]
+atlas = ExtResource("5_jeuig")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ctk"]
+atlas = ExtResource("5_jeuig")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6sbh"]
+atlas = ExtResource("5_jeuig")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ww8y0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6ppd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_728xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cryfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ctk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6sbh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_teg6c"]
 size = Vector2(44, 65)
@@ -46,32 +96,24 @@ script = ExtResource("1_s3v07")
 position = Vector2(130, 134)
 
 [node name="InitialWind" type="Area2D" parent="Level1Layout"]
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/InitialWind"]
 position = Vector2(672, -83.875)
 shape = SubResource("RectangleShape2D_2yyp2")
 
 [node name="FirstWindJump" type="Area2D" parent="Level1Layout"]
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/FirstWindJump"]
 position = Vector2(920, -82)
 shape = SubResource("RectangleShape2D_xw3cu")
 
 [node name="WindTunnel" type="Area2D" parent="Level1Layout"]
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/WindTunnel"]
 position = Vector2(1714.5, -133)
 shape = SubResource("RectangleShape2D_ibo6r")
 
 [node name="WindJumpZone" type="Area2D" parent="Level1Layout"]
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/WindJumpZone"]
 position = Vector2(1429, -522)
@@ -140,7 +182,7 @@ position = Vector2(3773, 207)
 shape = SubResource("RectangleShape2D_rouni")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(697, -331)
+position = Vector2(702, -331)
 shape = SubResource("RectangleShape2D_2yax8")
 
 [node name="FourthPopup" type="Area2D" parent="."]
@@ -162,20 +204,89 @@ text = "Phew... I really need to
 find a tree to attune with!"
 horizontal_alignment = 1
 
+[node name="FifthPopup" type="Area2D" parent="."]
+position = Vector2(1074, -664)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FifthPopup"]
+position = Vector2(-112.5, 76.5)
+shape = SubResource("RectangleShape2D_o2mvf")
+
+[node name="Label" type="Label" parent="FifthPopup"]
+visible = false
+offset_left = -99.0
+offset_top = 100.0
+offset_right = 109.0
+offset_bottom = 123.0
+theme = ExtResource("3_7hk28")
+theme_override_font_sizes/font_size = 20
+text = "Oh brother..."
+metadata/_edit_use_anchors_ = true
+
+[node name="LastPopup" type="Area2D" parent="."]
+position = Vector2(1213, -874)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LastPopup"]
+position = Vector2(21.5, 26)
+shape = SubResource("RectangleShape2D_jmdh5")
+
+[node name="Label" type="Label" parent="LastPopup"]
+visible = false
+offset_left = -122.0
+offset_top = -108.0
+offset_right = 177.0
+offset_bottom = -42.0
+theme = ExtResource("3_7hk28")
+theme_override_font_sizes/font_size = 20
+text = "Finally, the top!
+spring will come soon...
+i know it!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLabel" type="Label" parent="LastPopup"]
+visible = false
+offset_left = 61.0
+offset_top = -39.0
+offset_right = 101.0
+offset_bottom = -16.0
+theme = ExtResource("3_7hk28")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="DeathLabel" type="Label" parent="LastPopup"]
+visible = false
+offset_left = -58.0
+offset_top = -39.0
+offset_right = -18.0
+offset_bottom = -16.0
+theme = ExtResource("3_7hk28")
+theme_override_font_sizes/font_size = 10
+
+[node name="ChallengeLabel" type="Label" parent="LastPopup"]
+visible = false
+offset_left = 105.0
+offset_top = 3.0
+offset_right = 236.0
+offset_bottom = 56.0
+theme = ExtResource("3_7hk28")
+theme_override_font_sizes/font_size = 10
+text = "The developer's best
+time was 43.17.
+
+Can you beat it?"
+horizontal_alignment = 1
+
 [node name="Player" parent="." instance=ExtResource("2_yrwx1")]
-position = Vector2(57, 77)
-metadata/_edit_lock_ = true
+position = Vector2(59, 76)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(55, 66)
-metadata/_edit_lock_ = true
+position = Vector2(57, 65)
 
 [node name="FirstCheckpoint" type="Area2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="FirstCheckpoint"]
+position = Vector2(-48, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FirstCheckpoint"]
-position = Vector2(1705, 39)
+position = Vector2(1706, 71)
 shape = SubResource("RectangleShape2D_pg6ao")
 
 [node name="Marker2D" type="Marker2D" parent="FirstCheckpoint"]
@@ -191,9 +302,11 @@ theme = ExtResource("3_7hk28")
 theme_override_font_sizes/font_size = 20
 text = "Finally... some respite!"
 
-[node name="SecondCheckpoint" type="Area2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FirstCheckpoint"]
+position = Vector2(1781, 90)
+sprite_frames = SubResource("SpriteFrames_ww8y0")
 
-[node name="Sprite2D" type="Sprite2D" parent="SecondCheckpoint"]
+[node name="SecondCheckpoint" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SecondCheckpoint"]
 position = Vector2(1228, -490)
@@ -217,10 +330,13 @@ on the first
 try, right?"
 horizontal_alignment = 1
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SecondCheckpoint"]
+position = Vector2(1164, -474)
+sprite_frames = SubResource("SpriteFrames_ww8y0")
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("6_utm3l")
-volume_db = 16.0
 autoplay = true
 
 [node name="PopupNoise" type="AudioStreamPlayer" parent="."]
@@ -232,14 +348,14 @@ stream = ExtResource("8_fx81f")
 [node name="DeathNoise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_dcjnw")
 
-[connection signal="body_entered" from="Level1Layout/InitialWind" to="." method="_on_wind_body_entered" binds= [100.0, 180.0]]
-[connection signal="body_exited" from="Level1Layout/InitialWind" to="." method="_on_wind_body_exited"]
-[connection signal="body_entered" from="Level1Layout/FirstWindJump" to="." method="_on_wind_body_entered" binds= [275.0, 315.0]]
-[connection signal="body_exited" from="Level1Layout/FirstWindJump" to="." method="_on_wind_body_exited"]
-[connection signal="body_entered" from="Level1Layout/WindTunnel" to="." method="_on_wind_body_entered" binds= [750.0, 270.0]]
-[connection signal="body_exited" from="Level1Layout/WindTunnel" to="." method="_on_wind_body_exited"]
-[connection signal="body_entered" from="Level1Layout/WindJumpZone" to="." method="_on_wind_body_entered" binds= [150.0, 270.0]]
-[connection signal="body_exited" from="Level1Layout/WindJumpZone" to="." method="_on_wind_body_exited"]
+[node name="SpeedrunTimer" type="Timer" parent="."]
+wait_time = 1e+07
+
+[connection signal="area_entered" from="Level1Layout/InitialWind" to="." method="_on_wind_area_entered" binds= [100.0, 180.0]]
+[connection signal="area_exited" from="Level1Layout/InitialWind" to="." method="_on_wind_area_exited"]
+[connection signal="area_entered" from="Level1Layout/FirstWindJump" to="." method="_on_wind_area_entered" binds= [275.0, 315.0]]
+[connection signal="area_entered" from="Level1Layout/WindTunnel" to="." method="_on_wind_area_entered" binds= [750.0, 270.0]]
+[connection signal="area_entered" from="Level1Layout/WindJumpZone" to="." method="_on_wind_area_entered" binds= [150.0, 270.0]]
 [connection signal="area_entered" from="FirstPopup" to="." method="_on_first_popup_area_entered"]
 [connection signal="area_exited" from="FirstPopup" to="." method="_on_first_popup_area_exited"]
 [connection signal="area_entered" from="SecondPopup" to="." method="_on_second_popup_area_entered"]
@@ -249,6 +365,9 @@ stream = ExtResource("9_dcjnw")
 [connection signal="area_entered" from="Killzone" to="." method="_on_killzone_area_entered"]
 [connection signal="area_entered" from="FourthPopup" to="." method="_on_fourth_popup_area_entered"]
 [connection signal="area_exited" from="FourthPopup" to="." method="_on_fourth_popup_area_exited"]
+[connection signal="area_entered" from="FifthPopup" to="." method="_on_fifth_popup_area_entered"]
+[connection signal="area_exited" from="FifthPopup" to="." method="_on_fifth_popup_area_exited"]
+[connection signal="area_entered" from="LastPopup" to="." method="_on_last_popup_area_entered"]
 [connection signal="area_entered" from="FirstCheckpoint" to="." method="_on_first_checkpoint_area_entered"]
 [connection signal="area_exited" from="FirstCheckpoint" to="." method="_on_first_checkpoint_area_exited"]
 [connection signal="area_entered" from="SecondCheckpoint" to="." method="_on_second_checkpoint_area_entered"]
