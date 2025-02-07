@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://csdot4mopow4n" path="res://level1layout.tscn" id="1_8ac8p"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_s3v07"]
 [ext_resource type="PackedScene" uid="uid://lk87bq5dpccu" path="res://player.tscn" id="2_yrwx1"]
-[ext_resource type="Theme" path="res://font_theme.tres" id="3_7hk28"]
+[ext_resource type="Theme" uid="uid://b7q4t1noctulq" path="res://font_theme.tres" id="3_7hk28"]
 [ext_resource type="FontFile" uid="uid://teq6r0iaqjdw" path="res://yummy nickels.ttf" id="4_jwsg5"]
 [ext_resource type="AudioStream" uid="uid://g0abpe8gvxwc" path="res://assets/sound/Music Loop.wav" id="6_utm3l"]
 [ext_resource type="AudioStream" uid="uid://d2mjukelx3vvf" path="res://assets/sound/Popup Noise.wav" id="7_ffcni"]
