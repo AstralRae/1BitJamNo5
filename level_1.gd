@@ -23,7 +23,6 @@ func reset_level():
 	$Player.position = $PlayerSpawn.position
 	$Player.publicReset.call()
 	
-
 func _on_wind_area_entered(area: Area2D, new_wind_speed: float, new_wind_angle: float):
 	$Player.WIND_SPEED = new_wind_speed
 	$Player.WIND_ANGLE = new_wind_angle
@@ -88,3 +87,16 @@ func _on_second_checkpoint_area_entered(area: Area2D) -> void:
 
 func _on_second_checkpoint_area_exited(area: Area2D) -> void:
 	$SecondCheckpoint/Label.hide()
+
+func _on_wind_body_entered(body: Node2D, new_wind_speed: float, new_wind_angle: float) -> void:
+	if body.name == "Player" or body.name.begins_with("SnowParticle"):
+		body.WIND_SPEED = new_wind_speed
+		body.WIND_ANGLE = new_wind_angle
+		
+func _on_wind_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		$Player.publicWindReset.call()
+		return
+	if body.name.begins_with("SnowParticle"):
+		body.WIND_SPEED = 0 # this will reset the particle to its previous velocity value
+		return

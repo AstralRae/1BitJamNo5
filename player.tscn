@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://lk87bq5dpccu"]
+[gd_scene load_steps=6 format=3 uid="uid://lk87bq5dpccu"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_x6sbc"]
-[ext_resource type="PackedScene" uid="uid://cmyisppnqsx3h" path="res://pausemenu.tscn" id="3_fhxwb"]
+[ext_resource type="PackedScene" path="res://pausemenu.tscn" id="3_fhxwb"]
 [ext_resource type="SpriteFrames" uid="uid://qcb5ubvbbqw4" path="res://player.tres" id="3_hwew2"]
+[ext_resource type="Script" path="res://snow_emitter.gd" id="4_nrexa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpp0u"]
 size = Vector2(16, 24)
@@ -39,6 +40,9 @@ one_shot = true
 position = Vector2(0, -2)
 sprite_frames = ExtResource("3_hwew2")
 animation = &"idle"
+
+[node name="SnowEmitter" type="Node2D" parent="."]
+script = ExtResource("4_nrexa")
 
 [connection signal="quit_signal" from="Camera2D/PauseMenu" to="." method="_on_pause_menu_quit_signal"]
 [connection signal="resume_signal" from="Camera2D/PauseMenu" to="." method="_on_pause_menu_resume_signal"]

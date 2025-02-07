@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://csdot4mopow4n" path="res://level1layout.tscn" id="1_8ac8p"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_s3v07"]
 [ext_resource type="PackedScene" uid="uid://lk87bq5dpccu" path="res://player.tscn" id="2_yrwx1"]
-[ext_resource type="Theme" uid="uid://b7q4t1noctulq" path="res://font_theme.tres" id="3_7hk28"]
+[ext_resource type="Theme" path="res://font_theme.tres" id="3_7hk28"]
 [ext_resource type="AudioStream" uid="uid://g0abpe8gvxwc" path="res://assets/sound/Music Loop.wav" id="6_utm3l"]
 [ext_resource type="AudioStream" uid="uid://d2mjukelx3vvf" path="res://assets/sound/Popup Noise.wav" id="7_ffcni"]
 [ext_resource type="AudioStream" uid="uid://33rbkg8cvol8" path="res://assets/sound/Checkpoint Noise.wav" id="8_fx81f"]
@@ -46,24 +46,32 @@ script = ExtResource("1_s3v07")
 position = Vector2(130, 134)
 
 [node name="InitialWind" type="Area2D" parent="Level1Layout"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/InitialWind"]
 position = Vector2(672, -83.875)
 shape = SubResource("RectangleShape2D_2yyp2")
 
 [node name="FirstWindJump" type="Area2D" parent="Level1Layout"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/FirstWindJump"]
 position = Vector2(920, -82)
 shape = SubResource("RectangleShape2D_xw3cu")
 
 [node name="WindTunnel" type="Area2D" parent="Level1Layout"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/WindTunnel"]
 position = Vector2(1714.5, -133)
 shape = SubResource("RectangleShape2D_ibo6r")
 
 [node name="WindJumpZone" type="Area2D" parent="Level1Layout"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Layout/WindJumpZone"]
 position = Vector2(1429, -522)
@@ -224,11 +232,14 @@ stream = ExtResource("8_fx81f")
 [node name="DeathNoise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_dcjnw")
 
-[connection signal="area_entered" from="Level1Layout/InitialWind" to="." method="_on_wind_area_entered" binds= [100.0, 180.0]]
-[connection signal="area_exited" from="Level1Layout/InitialWind" to="." method="_on_wind_area_exited"]
-[connection signal="area_entered" from="Level1Layout/FirstWindJump" to="." method="_on_wind_area_entered" binds= [275.0, 315.0]]
-[connection signal="area_entered" from="Level1Layout/WindTunnel" to="." method="_on_wind_area_entered" binds= [750.0, 270.0]]
-[connection signal="area_entered" from="Level1Layout/WindJumpZone" to="." method="_on_wind_area_entered" binds= [150.0, 270.0]]
+[connection signal="body_entered" from="Level1Layout/InitialWind" to="." method="_on_wind_body_entered" binds= [100.0, 180.0]]
+[connection signal="body_exited" from="Level1Layout/InitialWind" to="." method="_on_wind_body_exited"]
+[connection signal="body_entered" from="Level1Layout/FirstWindJump" to="." method="_on_wind_body_entered" binds= [275.0, 315.0]]
+[connection signal="body_exited" from="Level1Layout/FirstWindJump" to="." method="_on_wind_body_exited"]
+[connection signal="body_entered" from="Level1Layout/WindTunnel" to="." method="_on_wind_body_entered" binds= [750.0, 270.0]]
+[connection signal="body_exited" from="Level1Layout/WindTunnel" to="." method="_on_wind_body_exited"]
+[connection signal="body_entered" from="Level1Layout/WindJumpZone" to="." method="_on_wind_body_entered" binds= [150.0, 270.0]]
+[connection signal="body_exited" from="Level1Layout/WindJumpZone" to="." method="_on_wind_body_exited"]
 [connection signal="area_entered" from="FirstPopup" to="." method="_on_first_popup_area_entered"]
 [connection signal="area_exited" from="FirstPopup" to="." method="_on_first_popup_area_exited"]
 [connection signal="area_entered" from="SecondPopup" to="." method="_on_second_popup_area_entered"]
