@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbf75nwikpdga"]
+
+[ext_resource type="Script" path="res://snow_particle.gd" id="1_elg1r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwme8"]
+size = Vector2(1, 1)
+
+[sub_resource type="Curve" id="Curve_1eeqy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eojv5"]
+curve = SubResource("Curve_1eeqy")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mhsav"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_7nftm"]
+mesh = SubResource("QuadMesh_mhsav")
+base_texture = SubResource("CurveTexture_eojv5")
+image_size = Vector2(5, 5)
+
+[node name="SnowParticle" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+mass = 0.001
+gravity_scale = 0.0
+script = ExtResource("1_elg1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uwme8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("MeshTexture_7nftm")

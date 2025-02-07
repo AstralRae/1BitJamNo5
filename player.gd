@@ -39,8 +39,11 @@ const default_current_jump_velocity_applied = 0
 var jump_released = true
 const default_jump_released = true # Starts as true to prevent automatic jump on reset
 
+@onready var particle_scene = preload("res://snow_particle.tscn")
+
 func _ready():
 	## Load but hide the pause menu on scene load
+	$SnowEmitter.emission_area = get_viewport().size
 	$Camera2D/PauseMenu.hide()
 	$AnimatedSprite2D.play("idle")
 
@@ -50,6 +53,14 @@ func _physics_process(delta: float):
 		get_tree().paused = true
 		$Camera2D/PauseMenu.show()
 		$Camera2D/PauseMenu/ResumeButton.grab_focus()
+		
+	for i in range(floor($SnowEmitter.particle_count * delta)):
+		var particle = particle_scene.instantiate() as RigidBody2D
+		var random_x = (randf() - 0.5) * $SnowEmitter.emission_area.x
+		var random_y = (randf() - 0.5) * $SnowEmitter.emission_area.y
+		var random_position = Vector2(random_x, random_y)
+		particle.position = random_position
+		add_child(particle)
 	
 	# First we handle the vertical movement.
 	
